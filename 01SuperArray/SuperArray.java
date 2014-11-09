@@ -7,7 +7,13 @@ public class SuperArray{
     public SuperArray(int size){
 	data = new Object[size];
     }
-   
+    public static void main(String [] args){
+	Integer x = new Integer(5);
+	SuperArray L = new SuperArray();
+	L.add(x);
+	L.add(new Integer(99));
+	System.out.println(L);
+    }
     public String toString(){
 	String s = "[";
 	int i = 0;
@@ -94,21 +100,23 @@ public class SuperArray{
 	System.out.println("ERROR, INDEX IS OUT OF RANGE");
 	return null;
     }
-    public void set(int index, Object e){
+    public Object set(int index, Object e){
 	Object g = data[index];
 	if (inRange(index)){
 	    data[index] = e;
 	    return g;
 	}
-	System.out.println("ERROR, INDEX IS OUT OF RANGE")
+	System.out.println("ERROR, INDEX IS OUT OF RANGE");
 	    return null;
     }
-	
-    public static void main(String [] args){
-	Integer x = new Integer(5);
-	SuperArray L = new SuperArray();
-	L.add(x);
-	L.add(new Integer(99));
-	System.out.println(L);
+    public Object remove(int index){
+	Object g = data[index];
+	if (inRange(index)){
+	    data[index] = null;
+	    return g;
+	}
+	System.out.println("ERROR, INDEX IS OUT OF RANGE");
+	    return null;
     }
+   
 }
