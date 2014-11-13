@@ -1,0 +1,14 @@
+public class ArrayList{
+    public void collapseDuplicats(ArrayList<Integer>L){
+	ArrayList<Integer> newList = new ArrayList<Integer>();
+	int i = 0;
+	while ( i < L.length - 1){
+	    if ( L[i] != L[i + 1]){
+		newList[i] = L[i];
+	    }else{
+	    }
+	    i = i + 1;
+	}
+	return newList;
+    }
+}
