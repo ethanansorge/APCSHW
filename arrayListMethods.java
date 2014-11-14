@@ -1,16 +1,15 @@
 import java.util.Random;
 import java.util.*;
 public class arrayListMethods{
-    public void collapseDuplicats(ArrayList<Integer>L){
-        ArrayList<Integer> newList = new ArrayList<Integer>();
+    public static void collapseDuplicats(ArrayList<Integer>L){
 	int i = 0;
 	while ( i < L.size() - 1){
-	    if ( L.get(i) != L.get(i + 1)){
-		newList.set(i, L.get(i));
-		i = i + 1;
+	    if ( L.get(i).equals(L.get(i + 1))){
+		L.remove(i);
+	    }else{
+	    i = i + 1;
 	    }
 	}
-	L = newList;
     }
     public static void randomize( ArrayList<Integer> L) { 
 	int i = 0;
@@ -32,7 +31,19 @@ public class arrayListMethods{
 	}
 	randomize(L);
 	System.out.println(L);
-
+	L.set(0, 1);
+	L.set(1, 1);
+	L.set(2, 2);
+	L.set(3, 2);
+	L.set(4, 2);
+	L.set(5, 3);
+	L.set(6, 4);
+	L.set(7, 5);
+	L.set(8, 6);
+	L.set(9, 6);
+	collapseDuplicats(L);
+	System.out.println(L);
+	
     }
 
 }
