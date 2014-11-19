@@ -45,4 +45,31 @@ public class WordGrid{
 	}
 	return true;
     }
+    public boolean addWordVertical(String word,int row, int col){
+        int i = 0;
+	while (i < word.length()){
+	    if (data[row][col] == ' ' || data[row][col] == word.charAt(i)){
+		data[row][col] = word.charAt(i);
+		row = row + 1;
+		i = i + 1;
+	    }else{
+		return false;
+	    }
+	}
+	return true;
+    }
+    public boolean addWordDiagonal(String word,int row, int col){
+        int i = 0;
+	while (i < word.length()){
+	    if (data[row][col] == ' ' || data[row][col] == word.charAt(i)){
+		data[row][col] = word.charAt(i);
+		col = col + 1;
+		row = row + 1;
+		i = i + 1;
+	    }else{
+		return false;
+	    }
+	}
+	return true;
+    }
 }
