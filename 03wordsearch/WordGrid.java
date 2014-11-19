@@ -2,6 +2,7 @@ public class WordGrid{
     private char[][]data;
     public WordGrid(int rows, int cols){
 	data = new char[rows][cols];
+	clear();
     }
    
     public void clear (){
@@ -32,6 +33,16 @@ public class WordGrid{
 	return s;
     }
     public boolean addWordHorizontal(String word,int row, int col){
+        int i = 0;
+	while (i < word.length()){
+	    if (data[row][col] == ' ' || data[row][col] == word.charAt(i)){
+		data[row][col] = word.charAt(i);
+		col = col + 1;
+		i = i + 1;
+	    }else{
+		return false;
+	    }
+	}
 	return true;
     }
 }
