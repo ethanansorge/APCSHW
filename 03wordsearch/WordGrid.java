@@ -40,6 +40,12 @@ public class WordGrid{
 		col = col + 1;
 		i = i + 1;
 	    }else{
+		while (i > 0){
+		    data[row][col] = ' ';
+		    col = col  -1;
+		    i = i - 1;
+		}	
+		
 		return false;
 	    }
 	}
@@ -53,6 +59,12 @@ public class WordGrid{
 		row = row + 1;
 		i = i + 1;
 	    }else{
+		while (i > 0){
+		    data[row][col] = ' ';
+		    row = row - 1;
+		    i = i - 1;
+		}	
+		
 		return false;
 	    }
 	}
@@ -67,9 +79,23 @@ public class WordGrid{
 		row = row + 1;
 		i = i + 1;
 	    }else{
-		return false;
+		while (i > 0){
+			data[row][col] = ' ';
+			col = col - 1;
+			row = row - 1;
+			i = i - 1;
+		}	
+			return false;
+		    }
+		}
+		return true;
 	    }
-	}
-	return true;
+    public static void main (String [] args){
+	WordGrid a = new WordGrid(10, 10);
+	System.out.println(a);
+	a.addWordHorizontal("candy", 0, 0);
+	a.addWordHorizontal("delete", 0, 0);
+	a.addWordVertical("Guitar", 3, 3);
+	System.out.println(a);
     }
 }
