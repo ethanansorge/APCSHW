@@ -92,10 +92,9 @@ public class WordGrid{
 	    }
     public static void main (String [] args){
 	WordGrid a = new WordGrid(10, 10);
-	System.out.println(a);
-	a.addWordHorizontal("candy", 0, 0);
-	a.addWordHorizontal("delete", 0, 0);
-	a.addWordVertical("Guitar", 3, 3);
+	a.addWordDiagonal("Ethan", 0,0);
+	a.addWordHorizontal("Julias", 8, 0);
+	a.addWordVertical("Bob", 5, 6);
 	System.out.println(a);
     }
 }
