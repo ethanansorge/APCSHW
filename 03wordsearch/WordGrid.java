@@ -90,11 +90,31 @@ public class WordGrid{
 		}
 		return true;
 	    }
+    public boolean addWord(String word, int row, int col, int x, int y){
+	int i = 0;
+	while (i < word.length()){
+	    if (data[row][col] == ' ' || data[row][col] == word.charAt(i)){
+		data[row][col] = word.charAt(i);
+		col = col + x;
+		row = row + y;
+		i = i + 1;
+	    }else{
+		while (i > 0){
+			data[row][col] = ' ';
+			col = col - x;
+			row = row - y;
+			i = i - 1;
+		}	
+			return false;
+		    }
+		}
+		return true;
+	    }
     public static void main (String [] args){
 	WordGrid a = new WordGrid(10, 10);
-	a.addWordDiagonal("Ethan", 0,0);
-	a.addWordHorizontal("Julias", 8, 0);
-	a.addWordVertical("Bob", 5, 6);
+	a.addWord("Ethan", 0, 0, 0, 1);
+	a.addWord("Julias", 8, 0, 1, 0);
+	a.addWord("Bob", 5, 6, -1, 0);
 	System.out.println(a);
     }
 }
