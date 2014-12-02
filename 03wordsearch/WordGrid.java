@@ -1,3 +1,5 @@
+import java.io.*;
+import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -41,6 +43,20 @@ public class WordGrid{
 	}
 	return s;
     }
+    public void loadWordsFromFile(String fileName, boolean fillRandomLetters){
+	ArrayList<String> words = new ArrayList<String>();
+	try {
+	    File text = new File (fileName);
+	    Scanner scnr = new Scanner(text);
+	    while(scnr.hasNextLine()){
+		String line = scnr.nextLine();
+		words.add(line);
+	    }
+	}catch (Execption FileNotFoundException){
+	    System.out.println("The file cannot be found :(");
+	}
+    }
+
     public boolean addWordHorizontal(String word,int row, int col){
         int i = 0;
 	while (i < word.length()){
