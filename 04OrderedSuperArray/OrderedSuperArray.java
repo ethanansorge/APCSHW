@@ -6,8 +6,7 @@ public class OrderedSuperArray extends SuperArray{
 	if(size() == data.length){
 	    resize(size * 2);
 	}
-	data[wherePlace(o)] = o;
-	size++;
+	super.add(wherePlace(o), o);
     }
     public int wherePlace(String o){
 	int i = 0;
