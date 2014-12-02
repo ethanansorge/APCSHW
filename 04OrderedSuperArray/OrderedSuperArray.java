@@ -18,4 +18,14 @@ public class OrderedSuperArray extends SuperArray{
 	}
 	return data.length;
     }
+    public String set(int index, String o){
+	if(index < 0 || index >= size()){
+	    throw new IndexOutOfBoundsException();
+	}
+	String temp = data[index];
+	data[index]= o;
+	super.add(wherePlace(o), o);
+	remove(index, 0);
+	return temp;
+    }
 }
