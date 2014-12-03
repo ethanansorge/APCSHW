@@ -7,24 +7,27 @@ import java.util.Random;
 import java.util.ArrayList;
 public class WordGrid{
     private Random RandomSeed;
-    private String [] addedWords;
+    private ArrayList<String> addedWords;
     private char[][]data;
-    private boolean justanswers;
     public WordGrid(){
 	this(10,10);
     }
 
     public WordGrid(int rows, int cols){
+	Random r = new Random();
 	data = new char[rows][cols];
-	RandomSeed = new Random();
+	setSeed(r.nextInt(100000000));
 	clear();
+	addedWords = new ArrayList<String>();
     }
 
     public WordGrid(int rows, int cols, int random){
 	this(rows,cols);
-	RandomSeed = new Random(random);
+	setSeed(random);
     }
- 
+    public void setSeed(long seed){
+	RandomSeed = new Random(seed);
+    }
     public void clear (){
 	int i = 0;
 	int c;
@@ -59,10 +62,10 @@ public class WordGrid{
 	    File text = new File (fileName);
 	    Scanner scnr = new Scanner(text);
 
-	while(scnr.hasNextLine()){
-	    String line = scnr.nextLine();
-	    words.add(line);
-	}
+	    while(scnr.hasNextLine()){
+		String line = scnr.nextLine();
+		words.add(line);
+	    }
 	}catch (Exception FileNotFoundException){
 	    System.out.println("The file cannot be found :(");
 	}
@@ -93,6 +96,7 @@ public class WordGrid{
 		return false;
 	    }
 	}
+	addedWords.add(word);
 	return true;
     }
     public boolean addWordVertical(String word,int row, int col){
@@ -112,6 +116,7 @@ public class WordGrid{
 		return false;
 	    }
 	}
+	addedWords.add(word);
 	return true;
     }
     public boolean addWordDiagonal(String word,int row, int col){
@@ -132,6 +137,7 @@ public class WordGrid{
 		return false;
 	    }
 	}
+	addedWords.add(word);
 	return true;
     }
     public boolean addWord(String word, int row, int col, int x, int y){
@@ -152,21 +158,20 @@ public class WordGrid{
 		return false;
 	    }
 	}
-	
+	addedWords.add(word);
 	return true;
     }
-    public String wordsInPuzzle(){
-	return "a";
+    public ArrayList wordsInPuzzle(){
+	return addedWords;
     }
     public void fillRandom(){
-	Random r = new Random();
 	int i = 0;
 	int c;
 	while ( i < data.length){
 	    c = 0;
 	    while (c < data[0].length){
 		if (data[i][c] == ' '){
-		    data[i][c] = (char)('a' + r.nextInt(25) + 97);
+		    data[i][c] = (char)('a' + RandomSeed.nextInt(25) + 97);
 		}
 		c = c + 1;
 	    }
@@ -187,6 +192,11 @@ public class WordGrid{
 	    i = i + 1;
 	}
     }
-    public void addAll(ArrayList words){
+    public void addAll(ArrayList<String> words){
+	int i = 0;
+	while (i < words.size()){
+	    addWord(words.get(i), RandomSeed.nextInt(data.length) , RandomSeed.nextInt(data[0].length), RandomSeed.nextInt(3) + -1, RandomSeed.nextInt(3) + -1);
+	    i = i + 1;
+	}
     }
 }
