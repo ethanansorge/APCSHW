@@ -6,21 +6,25 @@ import java.util.Scanner;
 import java.util.Random;
 import java.util.ArrayList;
 public class WordGrid{
-    int Random;
-    Array [] addedWords = new String [20];
+    private Random RandomSeed;
+    private String [] addedWords;
     private char[][]data;
+    private boolean justanswers;
     public WordGrid(){
 	this(10,10);
     }
-   
+
     public WordGrid(int rows, int cols){
 	data = new char[rows][cols];
-	Random = new Random();
+	RandomSeed = new Random();
 	clear();
     }
+
     public WordGrid(int rows, int cols, int random){
+	this(rows,cols);
+	RandomSeed = new Random(random);
     }
-   
+ 
     public void clear (){
 	int i = 0;
 	int c;
@@ -40,27 +44,31 @@ public class WordGrid{
 	int c;
 	while ( i < data.length){
 	    c = 0;
-	    while (c < data.length){
+	    while (c < data[0].length){
 		s = s + data[i][c] + " ";
 		c = c + 1;
-		s = s + "\n";
 	    }
+	    s = s + "\n";
 	    i = i + 1;
 	}
 	return s;
     }
-    public void loadWordsFromFile(String fileName, boolean fillRandomLetters){
+    public void loadWordsFromFile(String fileName, boolean fillRandomLetters) throws FileNotFoundException{
 	ArrayList<String> words = new ArrayList<String>();
 	try {
 	    File text = new File (fileName);
 	    Scanner scnr = new Scanner(text);
 	    while(scnr.hasNextLine()){
-		String line = scnr.nextLine();
-		words.add(line);
-	    }
-	}catch (Execption FileNotFoundException){
+	    String line = scnr.nextLine();
+	    words.add(line);
+	}
+	if (fillRandomLetters){
+	    fillRandom();
+	}
+	}catch (Exception FileNotFoundException){
 	    System.out.println("The file cannot be found :(");
 	}
+	
     }
 
     public boolean addWordHorizontal(String word,int row, int col){
@@ -143,5 +151,21 @@ public class WordGrid{
 	return true;
     }
     public String wordsInPuzzle(){
-	
+	return "a";
+    }
+    public void fillRandom(){
+	Random r = new Random();
+	int i = 0;
+	int c;
+	while ( i < data.length){
+	    c = 0;
+	    while (c < data[0].length){
+		if (data[i][c] == ' '){
+		    data[i][c] = (char)('a' + r.nextInt(25) + 97);
+		}
+		c = c + 1;
+	    }
+	    i = i + 1;
+	}
+    }
 }
