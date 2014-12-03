@@ -199,8 +199,11 @@ public class WordGrid{
     public void addAll(ArrayList<String> words){
 	int i = 0;
 	while (i < words.size() - 1){
-	    addWord(words.get(i), RandomSeed.nextInt(data.length) , RandomSeed.nextInt(data[0].length), RandomSeed.nextInt(3) + -1, RandomSeed.nextInt(3) + -1);
-		i = i + 1;
+	    try{
+		addWord(words.get(i), RandomSeed.nextInt(data.length) , RandomSeed.nextInt(data[0].length), RandomSeed.nextInt(3) + -1, RandomSeed.nextInt(3) + -1);
+	    }catch(ArrayIndexOutOfBoundsException e){
 	    }
+	    i = i + 1;
 	}
+    }
 }

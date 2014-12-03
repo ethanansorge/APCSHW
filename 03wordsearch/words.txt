@@ -1,5 +1,5 @@
 cat
-dog
+rabbit
 banjo
 trumpet
 piano
@@ -7,3 +7,15 @@ guitar
 horse
 bacon
 eggs
+blue
+red
+green
+white
+black
+purple
+wallet
+coin
+money
+phone
+glass
+bottle
