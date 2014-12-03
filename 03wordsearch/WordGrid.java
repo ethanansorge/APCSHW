@@ -142,6 +142,9 @@ public class WordGrid{
     }
     public boolean addWord(String word, int row, int col, int x, int y){
 	int i = 0;
+	if ((row > data.length) || (col > data[0].length ||(row + word.length() * x > data.length || col + word.length() * y> data[0].length))){
+	    return false;
+	}else{
 	while (i < word.length()){
 	    if (data[row][col] == ' ' || data[row][col] == word.charAt(i)){
 		data[row][col] = word.charAt(i);
@@ -160,6 +163,7 @@ public class WordGrid{
 	}
 	addedWords.add(word);
 	return true;
+	}
     }
     public ArrayList wordsInPuzzle(){
 	return addedWords;
@@ -171,7 +175,7 @@ public class WordGrid{
 	    c = 0;
 	    while (c < data[0].length){
 		if (data[i][c] == ' '){
-		    data[i][c] = (char)('a' + RandomSeed.nextInt(25) + 97);
+		    data[i][c] = (char)(RandomSeed.nextInt(25) + 97);
 		}
 		c = c + 1;
 	    }
@@ -194,7 +198,7 @@ public class WordGrid{
     }
     public void addAll(ArrayList<String> words){
 	int i = 0;
-	while (i < words.size()){
+	while (i < words.size() - 1){
 	    addWord(words.get(i), RandomSeed.nextInt(data.length) , RandomSeed.nextInt(data[0].length), RandomSeed.nextInt(3) + -1, RandomSeed.nextInt(3) + -1);
 	    i = i + 1;
 	}
