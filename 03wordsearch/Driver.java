@@ -25,10 +25,14 @@ public class Driver{
 		}
 	    }else{
 		WordGrid a = new WordGrid(Integer.parseInt(args[0]), Integer.parseInt(args[1]), Integer.parseInt(args[2]));
-		a.loadWordsFromFile("words.txt", true);
-		System.out.println("Find these words: \n" + a.wordsInPuzzle());
-		System.out.println(a);
+		if (Integer.parseInt(args[3]) == 1){
+			a.loadWordsFromFile("words.txt", true);
+		    }else{
+			a.loadWordsFromFile("words.txt", false);
+			System.out.println("Find these words: \n" + a.wordsInPuzzle());
+		    }
+			System.out.println(a);
+		    }
+		    }
 	    }
 	}
-    }
-}

@@ -58,16 +58,21 @@ public class WordGrid{
 	try {
 	    File text = new File (fileName);
 	    Scanner scnr = new Scanner(text);
-	    while(scnr.hasNextLine()){
+
+	while(scnr.hasNextLine()){
 	    String line = scnr.nextLine();
 	    words.add(line);
-	}
-	if (fillRandomLetters){
-	    fillRandom();
 	}
 	}catch (Exception FileNotFoundException){
 	    System.out.println("The file cannot be found :(");
 	}
+	addAll(words);
+	if (fillRandomLetters){
+	    fillRandom();
+	}else{
+	    fillDashes();
+	}
+	
 	
     }
 
@@ -167,5 +172,21 @@ public class WordGrid{
 	    }
 	    i = i + 1;
 	}
+    }
+    public void fillDashes(){
+	int i = 0;
+	int c;
+	while ( i < data.length){
+	    c = 0;
+	    while (c < data[0].length){
+		if (data[i][c] == ' '){
+		    data[i][c] = '_';
+		}
+		c = c + 1;
+	    }
+	    i = i + 1;
+	}
+    }
+    public void addAll(ArrayList words){
     }
 }
