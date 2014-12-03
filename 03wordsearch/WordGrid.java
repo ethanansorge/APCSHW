@@ -7,6 +7,7 @@ import java.util.Random;
 import java.util.ArrayList;
 public class WordGrid{
     int Random;
+    Array [] addedWords = new String [20];
     private char[][]data;
     public WordGrid(){
 	this(10,10);
@@ -14,7 +15,10 @@ public class WordGrid{
    
     public WordGrid(int rows, int cols){
 	data = new char[rows][cols];
+	Random = new Random();
 	clear();
+    }
+    public WordGrid(int rows, int cols, int random){
     }
    
     public void clear (){
@@ -39,7 +43,7 @@ public class WordGrid{
 	    while (c < data.length){
 		s = s + data[i][c] + " ";
 		c = c + 1;
-		s = s + "\n"
+		s = s + "\n";
 	    }
 	    i = i + 1;
 	}
@@ -135,6 +139,9 @@ public class WordGrid{
 		return false;
 	    }
 	}
+	
 	return true;
     }
+    public String wordsInPuzzle(){
+	
 }
