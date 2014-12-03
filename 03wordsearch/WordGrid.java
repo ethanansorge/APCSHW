@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.Random;
 import java.util.ArrayList;
 public class WordGrid{
+    int Random;
     private char[][]data;
     public WordGrid(){
 	this(10,10);
@@ -38,6 +39,7 @@ public class WordGrid{
 	    while (c < data.length){
 		s = s + data[i][c] + " ";
 		c = c + 1;
+		s = s + "\n"
 	    }
 	    i = i + 1;
 	}
