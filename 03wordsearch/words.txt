@@ -7,13 +7,3 @@ guitar
 horse
 bacon
 eggs
-cheese
-toast
-waffle
-pancake
-red
-blue
-yellow
-triangle
-square
-rectangle

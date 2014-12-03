@@ -67,7 +67,7 @@ public class WordGrid{
 		words.add(line);
 	    }
 	}catch (Exception FileNotFoundException){
-	    System.out.println("The file cannot be found :(");
+	    System.out.println("The file can't be found :(");
 	}
 	addAll(words);
 	if (fillRandomLetters){
@@ -142,27 +142,27 @@ public class WordGrid{
     }
     public boolean addWord(String word, int row, int col, int x, int y){
 	int i = 0;
-	if ((row > data.length) || (col > data[0].length ||(row + word.length() * x > data.length || col + word.length() * y> data[0].length))){
+	if ((row > data.length) || (col > data[0].length ||(row + word.length() * x > data.length - 1 || col + word.length() * y> data[0].length - 1))){
 	    return false;
 	}else{
-	while (i < word.length()){
-	    if (data[row][col] == ' ' || data[row][col] == word.charAt(i)){
-		data[row][col] = word.charAt(i);
-		col = col + x;
-		row = row + y;
-		i = i + 1;
-	    }else{
-		while (i > 0){
-		    data[row][col] = ' ';
-		    col = col - x;
-		    row = row - y;
-		    i = i - 1;
-		}	
-		return false;
+	    while (i < word.length()){
+		if (data[row][col] == ' ' || data[row][col] == word.charAt(i)){
+		    data[row][col] = word.charAt(i);
+		    col = col + x;
+		    row = row + y;
+		    i = i + 1;
+		}else{
+		    while (i > 0){
+			data[row][col] = ' ';
+			col = col - x;
+			row = row - y;
+			i = i - 1;
+		    }	
+		    return false;
+		}
 	    }
-	}
-	addedWords.add(word);
-	return true;
+	    addedWords.add(word);
+	    return true;
 	}
     }
     public ArrayList wordsInPuzzle(){
@@ -200,7 +200,7 @@ public class WordGrid{
 	int i = 0;
 	while (i < words.size() - 1){
 	    addWord(words.get(i), RandomSeed.nextInt(data.length) , RandomSeed.nextInt(data[0].length), RandomSeed.nextInt(3) + -1, RandomSeed.nextInt(3) + -1);
-	    i = i + 1;
+		i = i + 1;
+	    }
 	}
-    }
 }
