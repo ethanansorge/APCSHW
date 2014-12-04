@@ -69,12 +69,24 @@ public class SuperArray{
 	data = newData;
     }
     public void insertionSort(){
-	int i = 0;
-	while ( i < data.length){
-	    set(i, (set(wherePlace(data[i]), data[i])));
+	int i = 1;
+	String temp;
+	int c;
+	while (i < data.length - 1){
+	    temp = remove(i);
+	    c = i - 1;
+	    while (c > 0){
+		if (temp.compareTo(data[c]) < 0){
+		    data[c + 1] = data[c];
+		    c = c - 1;
+		}else{
+		    data[c + 1] = temp;
+		    break;
+		}
+	    }
 	    i = i + 1;
 	}
-    }   	
+    }
     public String set(int index, String o){
 	if(index < 0 || index >= size()){
 	    throw new IndexOutOfBoundsException();
