@@ -69,31 +69,31 @@ public class SuperArray{
 	data = newData;
     }
     public void insertionSort(){
-	int i = 1;
+	int i = 0;
 	while ( i < data.length){
 	    set(i, (set(wherePlace(data[i]), data[i])));
 	    i = i + 1;
-		       }
-	}   	
-	public String set(int index, String o){
-	    if(index < 0 || index >= size()){
-		throw new IndexOutOfBoundsException();
-	    }
-	    String temp = data[index];
-	    data[index]= o;
-	    return temp;
 	}
-
-	public String get(int index){
-	    if(index < 0 || index >= size()){
-		throw new IndexOutOfBoundsException();
-	    }
-	    return data[index];
+    }   	
+    public String set(int index, String o){
+	if(index < 0 || index >= size()){
+	    throw new IndexOutOfBoundsException();
 	}
+	String temp = data[index];
+	data[index]= o;
+	return temp;
+    }
 
-	public String remove(int index){
-	    if(index < 0 || index >= size()){
-		throw new IndexOutOfBoundsException();
+    public String get(int index){
+	if(index < 0 || index >= size()){
+	    throw new IndexOutOfBoundsException();
+	}
+	return data[index];
+    }
+
+    public String remove(int index){
+	if(index < 0 || index >= size()){
+	    throw new IndexOutOfBoundsException();
 	}
 
 	String temp = data[index];
@@ -122,12 +122,26 @@ public class SuperArray{
 	    resize(data.length / 2);
 	}
     }
+    public void badInsertionSort(){
+        OrderedSuperArray c = new OrderedSuperArray();
+        while( this.size() > 0){ 
+            c.add(this.remove(0));
+        }
+        while(c.size() > 0){
+            this.add(c.remove(0));
+        }
+    }
     public static void main (String [] args){
-	SuperArray a = new SuperArray(4);
+	SuperArray a = new SuperArray(8);
+	a.add("Sheep");
 	a.add("Charlie");
 	a.add("Apple");
 	a.add("Zebra");
 	a.add("Hat");
+	a.add("Rabbit");
+	a.add("Rabbit");
+	a.add("Calculator");
+	System.out.println(a);
 	a.insertionSort();
 	System.out.println(a);
     }
