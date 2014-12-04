@@ -143,6 +143,16 @@ public class SuperArray{
             this.add(c.remove(0));
         }
     }
+    public int find (String target){
+	int i = 0;
+	while (i < data.length){
+	    if data[i].equals(target){
+		    return i;
+		}
+	    i = i + 1;
+	}
+	return data.length;
+    }
     public static void main (String [] args){
 	SuperArray a = new SuperArray(8);
 	a.add("Sheep");

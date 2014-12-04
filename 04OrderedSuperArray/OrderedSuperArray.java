@@ -29,4 +29,9 @@ public class OrderedSuperArray extends SuperArray{
 	remove(index, 0);
 	return temp;
     }
+    pub int find (String target){
+	int c = data.length / 2;
+	while (c > 0 && c < data.length){
+	}
+    }
 }
