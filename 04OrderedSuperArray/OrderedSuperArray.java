@@ -29,9 +29,19 @@ public class OrderedSuperArray extends SuperArray{
 	remove(index, 0);
 	return temp;
     }
-    pub int find (String target){
+    public int find (String target){
 	int c = data.length / 2;
 	while (c > 0 && c < data.length){
+	    if (same(target, data[c])){
+		return findEarlist(target, c);
+	    }
+	    if (data[c].compareTo(target) > 0){
+	    c = (c + data.length) / 2
+		}else{
+		c = c / 2;
+	    }
+	}
+	return c;
 	}
     }
 }
