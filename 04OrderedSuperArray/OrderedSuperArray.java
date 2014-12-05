@@ -32,24 +32,26 @@ public class OrderedSuperArray extends SuperArray{
     public int find (String target){
 	int c = data.length / 2;
 	while (c > 0 && c < data.length){
-	    if (target.equals(data[c]))){
+	    if (target.equals(data[c])){
 		return findFirst(target, c);
 	    }
 	    if (data[c].compareTo(target) > 0){
-		c = (c + data.length) / 2
+		c = (c + data.length) / 2;
 		    }else{
 		c = c / 2;
 	    }
 	}
 	return c;
     }
-    public int findFirst (int target, int initial){
+    public int findFirst (String target, int initial){
 	while (initial > 1){
 	    if (! (data[initial - 1].equals(target))){
-		reuturn initial;
+		return initial;
 	    }
 	    initial = initial - 1;
 	}
+	return initial;
     }
     
 }
+
