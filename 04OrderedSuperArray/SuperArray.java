@@ -1,3 +1,4 @@
+import java.util.Random;
 public class SuperArray{
     int size;
     String[] data;
@@ -155,39 +156,36 @@ public class SuperArray{
     }
     public void selectionSort(){
 	int i = 0;
-	int c,j ;
-	String l;
+	int c, j;
+	String lowestValue;
 	String temp;
-	while (i < data.length - 1){
-	    l = data[i];
+	while (i < data.length){
+	    lowestValue = data[i];
 	    c = i + 1;
-	    j = c;
+	    j = i;
 	    while (c < data.length - 1){
-		if (data[c].compareTo(l) < 0){
-		    l = data[c];
-		    j = j + 1;
+		if (data[c].compareTo(lowestValue) < 0){
+		    lowestValue = data[c];
+		    j = c;
 		}
 		c = c + 1;
 	    }
 	    temp = data[i];
-	    data[i] = l;
+	    data[i] = lowestValue;
 	    data[j] = temp;
 	    i = i + 1;
 	}
     }
 		    
     public static void main (String [] args){
-	SuperArray a = new SuperArray(8);
-	a.add("Sheep");
-	a.add("Charlie");
-	a.add("Apple");
-	a.add("Zebra");
-	a.add("Hat");
-	a.add("Rabbit");
-	a.add("Rabbit");
-	a.add("Calculator");
-	System.out.println(a);
+	Random r = new Random();
+	SuperArray a = new SuperArray(100000);
+	int i = 0;
+	while (i < 99999){
+	    a.add("" + r.nextInt(100));
+	    i = i + 1;
+	}
 	a.selectionSort();
-	System.out.println(a);
+	System.out.println("sorted");
     }
 }
