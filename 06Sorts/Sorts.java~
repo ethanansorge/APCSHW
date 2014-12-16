@@ -1,0 +1,6 @@
+public class Sorts{
+    public void bubbleSort(int [] c){
+	int i = 0;
+	while (i < c.length() - 1){
+	    if (c[i] < c[i + 1]){
+		
