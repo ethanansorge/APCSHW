@@ -1,3 +1,6 @@
+import java.util.Random;
+import java.util.ArrayList;
+
 public class Sorts{
     public static void bubbleSort(int [] data){
 	int i = 0;
@@ -15,17 +18,23 @@ public class Sorts{
 	    c = c - 1;
 	}
     }
-    public void selectionSort(int [] data){
+    public static String name(){
+	return "Ansorge,Ethan";
+    }
+    public static int period(){
+	return 7;
+    }
+    public static void selectionSort(int [] data){
 	int i = 0;
 	int c, j;
-	String lowestValue;
-	String temp;
+	int lowestValue;
+	int temp;
 	while (i < data.length){
 	    lowestValue = data[i];
 	    c = i + 1;
 	    j = i;
 	    while (c < data.length - 1){
-		if (data[c].compareTo(lowestValue) < 0){
+		if (data[c] < lowestValue){
 		    lowestValue = data[c];
 		    j = c;
 		}
@@ -37,9 +46,22 @@ public class Sorts{
 	    i = i + 1;
 	}
     }
+    public static void radixSort(int [] c){
+	ArrayList<ArrayList<Integer>> a = new ArrayList<ArrayList<Integer>>();
+	int i = 0;
+	while (i < c.length()){
+	    a.add(i, c[0]);
+	}
+    }
+    
     public static void main (String [] args){
-	int [] c  = {2 , 6, 234, 67, 0, 314, 54 ,3};
+	Random r = new Random();
+	 int [] c = new int[100000];
+	 int i = 0;
+	 while (i < c.length){
+	     c[i] = r.nextInt(100);
+	     i = i + 1;
+	 }
 	bubbleSort(c);
-	System.out.println(c);
     }
 }
